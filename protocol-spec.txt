@@ -1,0 +1,31 @@
+Protocol-Spec — Lucas Walbeck & Chris Eardensohn & Rory Abraham
+
+Option #1: Client streams song from server
+1) Send request for a specific song from client to server.
+    PLAY 'specified-song' 
+2) Server responds to request
+    2a) If song is found, respond with OK and stream bytes for playing into buffer
+    2b) Else, respond with BAD
+
+Option #2: Client requests list of songs from server
+1) Send request for a list of songs from client to server.
+    LIST
+2) Server responds to request
+    2a) If list is found, respond with OK and stream bytes for list of songs into buffer
+    2b) Else, respond with BAD
+
+Option #3: Client requests song info from server
+1) Send request for a list of songs from client to server.
+    INFO 'specified-song'
+2) Server responds to request
+    2a) If song is found, respond with OK and stream bytes of info of song into buffer
+    2b) Else, respond with BAD
+
+Option #4: Server receives invalid request from client
+1) Server ignores request
+2) Server responds with reprompt of commands PROMPT and stream bytes for list of commands for client
+
+Option #5: Client connects to server
+1) Send request message to server
+    HELLO
+2) Server responds with prompt of commands PROMPT and stream bytes for list of commands for client
